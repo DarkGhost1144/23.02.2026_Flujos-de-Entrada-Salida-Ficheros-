@@ -1,0 +1,33 @@
+import java.io.FileWriter;
+
+/**
+ *
+ * @author JKur
+ * @version 1.0
+ * @see FileWriter
+ */
+public class Ejer5 {
+
+    public static void main(String[] args) {
+        String l1 = "En un lugar de la Mancha,";
+        String l2 = "de cuyo nombre no quiero acordarme.";
+
+        try {
+            FileWriter fw = new FileWriter("ArchivoEjer05.txt");
+
+            for (int i = 0; i < l1.length(); i++) {
+                fw.write(l1.charAt(i));
+            }
+
+            fw.write("\n");
+
+            fw.write(l2);
+
+            fw.close();
+
+            System.out.println("Todo ha salido bien");
+        } catch (Exception e) {
+            System.out.println("Hubo un erro: " + e.getMessage());
+        }
+    }
+}
