@@ -1,0 +1,24 @@
+import java.io.FileOutputStream;
+
+/**
+ *
+ * @author JKur
+ * @version 1.0
+ * @see FileOutputStream
+ */
+public class Ejer1 {
+
+    public static void main(String[] args) {
+        try {
+            FileOutputStream fos = new FileOutputStream("ArchivoEjercicio01.bin");
+            fos.write((byte) 'k');
+            fos.write((byte) 'u');
+            fos.write((byte) 'b');
+            fos.write((byte) 'a');
+
+            fos.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
