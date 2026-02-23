@@ -1,0 +1,26 @@
+import java.io.FileReader;
+
+/**
+ *
+ * @author JKur
+ * @version 1.0
+ * @see FileReader
+ */
+public class Ejer4 {
+
+    public static void main(String[] args) {
+        try {
+            FileReader fr = new FileReader("Ejer4.java");
+
+            int valorC;
+
+            while ((valorC = fr.read()) != -1) {
+                //Convierto el int a un caracter
+                System.out.print((char) valorC);
+            }
+            fr.close();
+        } catch (Exception e) {
+            System.out.println("No se pudo leer el archivo: " + e.getMessage());
+        }
+    }
+}
