@@ -1,0 +1,60 @@
+
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+
+public class Ejer8 {
+
+    public static void main(String[] args) {
+        try {
+            FileWriter fw = new FileWriter("Enteros.txt");
+
+            fw.write("10 \t 20   30\n");
+            fw.write("  40\t\t50 \n\n");
+            fw.write("60 \t70\n");
+            fw.close();
+
+            System.out.println("Fichero Creado");
+
+            FileReader fr = new FileReader("Enteros.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            String linea = br.readLine();
+            int suma = 0;
+            int cantidad = 0;
+
+            while (linea != null) {
+                linea = linea.trim();
+
+                if (!linea.isEmpty()) {
+                    String[] arrayNumeros = linea.split("\\s+");
+
+                    for (int i = 0; i < arrayNumeros.length; i++) {
+                        suma = suma + Integer.parseInt(arrayNumeros[i]);
+                        cantidad++;
+                    }
+                }
+
+                // Pasamos a leer la siguiente línea
+                linea = br.readLine();
+            }
+
+            // Cerramos los flujos
+            br.close();
+            fr.close();
+
+            if (cantidad > 0) {
+                double media = (double) suma / cantidad;
+
+                System.out.println("Total de números leídos: " + cantidad);
+                System.out.println("Suma total: " + suma);
+                System.out.println("Media aritmética: " + media);
+            } else {
+                System.out.println("El fichero estaba vacío o no contenía números.");
+            }
+
+        } catch (Exception ex) {
+            System.err.println("Ha ocurrido un error: " + ex.getMessage());
+        }
+    }
+}
