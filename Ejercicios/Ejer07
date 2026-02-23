@@ -1,0 +1,53 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+/**
+ *
+ * @author JKur
+ * @version 1.0
+ * @see FileReader
+ */
+public class Ejer7 {
+
+    public static void main(String[] args) {
+        try {
+            FileWriter fw = new FileWriter("NumeroReales.txt");
+
+            fw.write("15.5 10.2 55.2 9.3");
+
+            fw.close();
+
+            System.out.println("Fichero Creado");
+
+            FileReader fr = new FileReader("NumeroReales.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String l = br.readLine();
+            br.close();
+            fr.close();
+
+            if (l != null && !l.isEmpty()) {
+                String[] arrayNumeros = l.split(" ");
+
+                double suma = 0;
+
+                int cant = arrayNumeros.length;
+
+                for (int i = 0; i < cant; i++) {
+                    suma = suma + Double.parseDouble(arrayNumeros[i]);
+                }
+
+                double media = suma / cant;
+
+                System.out.println("Numero leidos: " + l);
+                System.out.println("Suma de los numeros: " + suma);
+                System.out.println("MEdia de los numeros: " + media);
+            } else {
+                System.out.println("Fichero vacio");
+            }
+
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+    }
+}
