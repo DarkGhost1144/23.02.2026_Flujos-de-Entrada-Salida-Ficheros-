@@ -1,0 +1,43 @@
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.Scanner;
+
+/**
+ *
+ * @author JKur
+ * @version 1.0
+ * @see Scanner
+ * @see String
+ * @see FileReader
+ * @see FileWriter
+ */
+public class Ejer6 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Introduce el fichero que quieres duplicar: ");
+        String nombreO = sc.nextLine();
+
+        String nombreC = "Copia_de_" + nombreO;
+
+        try {
+            FileReader fr = new FileReader(nombreO);
+
+            FileWriter fw = new FileWriter(nombreC);
+
+            int valor;
+
+            while ((valor = fr.read()) != -1) {
+                fw.write(valor);
+            }
+
+            fr.close();
+            fw.close();
+            System.out.println("Fichero duplicado con exito");
+            System.out.println("Se ha creado el archivo: " + nombreC);
+        } catch (Exception e) {
+            System.out.println("Hubo un error al intentar duplicar el fichero: " + e.getMessage());
+        }
+    }
+}
