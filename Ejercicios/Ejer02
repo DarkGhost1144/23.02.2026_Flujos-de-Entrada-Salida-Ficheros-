@@ -1,0 +1,35 @@
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author JKur
+ * @version 1.0
+ * @see ArrayList
+ * @see List
+ * @see FileWriter
+ */
+public class Ejer2 {
+    public static void main(String[] args) {
+        List <String> listaEjer2 = new ArrayList<>();
+        
+        listaEjer2.add("El Betis es el mejor equipo del mundo");
+        listaEjer2.add("El betis va a ganar el mundial");
+        listaEjer2.add("Viva el Barcelona");
+        
+        try {
+            FileWriter fw = new FileWriter("ArchivoEjer02.txt");
+            
+            for (String cadena : listaEjer2) {
+                fw.write(cadena + "\n");
+            }
+            
+            System.out.println("Archivo Creado");
+            
+            fw.close();
+        } catch (Exception e) {
+            System.out.println("Hubo un problema: " +e.getMessage());
+        }
+    }
+}
