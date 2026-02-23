@@ -1,0 +1,40 @@
+
+import java.io.FileWriter;
+import java.util.Scanner;
+
+/**
+ *
+ * @author JKur
+ * @version 1.0
+ * @see FileWriter
+ * @see Scanner
+ */
+public class Ejer3 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            FileWriter fw = new FileWriter("ArchivoEjer3.txt");
+
+            System.out.print("Escribe palabra sin espacios, por favor (EScribir FIN para terminar): ");
+
+            while (true) {
+                String t = sc.next();
+
+                if (t.equals("fin")) {
+                    break;
+                }
+
+                fw.write(t + "\n");
+
+            }
+
+            fw.close();
+            System.out.println("Proceso terminado.");
+        } catch (Exception e) {
+            System.out.println("Hubo un error al escribir el archivo: " + e.getMessage());
+        }
+
+    }
+}
